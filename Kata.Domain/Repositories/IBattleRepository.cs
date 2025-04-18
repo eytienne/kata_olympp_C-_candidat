@@ -11,6 +11,6 @@ namespace Kata.Domain.Repositories
     {
         Task<BattleReport> SaveBattleReport();
         Task<IEnumerable<BattleReport>> GetAllBattlesReport();
-        Task<BattleReport?> GetBattleReportById();
+        Task<BattleReport?> GetBattleReportById(int Id);
     }
 }
