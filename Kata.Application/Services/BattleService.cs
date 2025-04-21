@@ -39,9 +39,8 @@ namespace Kata.Application.Services
             var battleReport = new BattleReport {
                 InitialClans = [clan1, clan2]
             };
-
-            var army1 = armies1.Current;
-            var army2 = armies2.Current;
+            var army1 = DeepClone(armies1.Current);
+            var army2 = DeepClone(armies2.Current);
             while (LiveArmy(army1) && LiveArmy(army2)) {
                 var damageArmy1 = army2.Attack*army2.NbUnits - army1.Defense*army1.NbUnits;
                 var damageArmy2 = army1.Attack*army1.NbUnits - army2.Defense*army2.NbUnits;
@@ -62,11 +61,11 @@ namespace Kata.Application.Services
                 });
                 if (!LiveArmy(army1)) {
                     armies1.MoveNext();
-                    army1 = armies1.Current;
+                    army1 = DeepClone(armies1.Current);
                 }
                 if (!LiveArmy(army2)) {
                     armies2.MoveNext();
-                    army2 = armies2.Current;
+                    army2 = DeepClone(armies2.Current);
                 }
             }
             battleReport.Winner = LiveArmy(army1) ? clan1 : (LiveArmy(army2) ? clan2 : null);

@@ -10,7 +10,7 @@ namespace Kata.Domain.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ICollection<Army> Armies { get; } = [];
-        public ICollection<BattleReport> BattleReports { get; } = [];
+        public ICollection<Army> Armies { get; set; } = [];
+        public ICollection<BattleReport> BattleReports { get; set; } = [];
     }
 }
